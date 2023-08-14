@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='index.css')}}">
+    <title>Youtube Search</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1 class="logo">Youtube Search</h1>
+        </nav>
+    </header>
+    <div class="container">
+        <form method="POST">
+            <input name="search" type="text">
+            <button type="submit" class="submitBtn">Search</button>
+        </form>
+        <div class="columns">
+            <div class="left">
+                {% for video in videos %}
+                <div class="content">
+                    <img src="{{video.thumbnail}}">
+                    <div class="title-time">
+                        <h3>{{video.title}}</h3>
+                        <h4>{{video.duration}}mins</h4>
+                    </div>
+                    <p>{{video.snippet}}</p>
+                    <a href="{{video.url}}" target="_blank" type="button">View</a>
+                </div>
+                {% endfor%}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
